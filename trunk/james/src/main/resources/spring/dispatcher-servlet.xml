@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+			http://www.springframework.org/schema/aop 
+			http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+			http://www.springframework.org/schema/tx 
+			http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+			http://www.springframework.org/schema/context
+       		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       		http://www.springframework.org/schema/mvc
+       		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+			
+	<context:annotation-config />
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.ordoict.JmxSystem" />
+	
+<!-- 	<context:component-scan base-package="com.ordoict.JmxSystem.james.web.Controller" use-default-filters="false"> -->
+<!-- 	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> -->
+<!-- 	</context:component-scan> -->
+	
+	<!-- ========================= MESSAGE SOURCE ======================== -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:message/message</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="cacheSeconds" value="60" />
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+    	<property name="defaultLocale" value="ko" />
+    </bean>
+    <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+        <property name="paramName" value="lang"/>
+    </bean>
+    <bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+    	<constructor-arg ref="messageSource" />
+    </bean>
+    
+    <bean id="firstJmxEntity" class="com.ordoict.jmxapi.entity.InputEntity">
+        <property name="urlPath" value="192.168.1.233:1111"/>
+        <property name="loginId" value="control"/>
+        <property name="loginPassword" value="test"/>
+        <property name="mail" value="win8109@gmail.com"/>
+        <property name="minCriticalValue" value="5"/>
+        <property name="maxCriticalValue" value="10"/>
+        <property name="mailSendTime" value="30000"/>
+        <property name="durationTime" value="3000"/>
+        <property name="entityId" value="1111"/>
+        <property name="propertiesName" value="/system/mail.properties"/>
+    </bean>
+   <!--  
+    <bean id="secondJmxEntity" class="com.ordoict.jmxapi.entity.InputEntity">
+        <property name="urlPath" value="52.33.172.151:8991"/>
+        <property name="loginId" value="8991"/>
+        <property name="loginPassword" value="aa"/>
+        <property name="mail" value="win8109@gmail.com"/>
+        <property name="minCriticalValue" value="15"/>
+        <property name="maxCriticalValue" value="25"/>
+        <property name="mailSendTime" value="30000"/>
+        <property name="durationTime" value="3000"/>
+        <property name="entityId" value="8991"/>
+        <property name="propertiesName" value="/system/mail.properties"/>
+    </bean>
+    
+    <bean id="thirdJmxEntity" class="com.ordoict.jmxapi.entity.InputEntity">
+        <property name="urlPath" value="52.33.172.151:8992"/>
+        <property name="loginId" value="8992"/>
+        <property name="loginPassword" value="aa"/>
+        <property name="mail" value="win8109@gmail.com,choijinwook84@ordoict.com"/>
+        <property name="minCriticalValue" value="20"/>
+        <property name="maxCriticalValue" value="25"/>
+        <property name="mailSendTime" value="30000"/>
+        <property name="durationTime" value="3000"/>
+        <property name="entityId" value="8992"/>
+        <property name="propertiesName" value="/system/mail.properties"/>
+    </bean>
+    
+    <bean id="fourthJmxEntity" class="com.ordoict.jmxapi.entity.InputEntity">
+        <property name="urlPath" value="52.33.172.151:8994"/>
+        <property name="loginId" value="8994"/>
+        <property name="loginPassword" value="aa"/>
+        <property name="mail" value="win8109@gmail.com,choijinwook84@ordoict.com"/>
+        <property name="minCriticalValue" value="10"/>
+        <property name="maxCriticalValue" value="25"/>
+        <property name="mailSendTime" value="30000"/>
+        <property name="durationTime" value="3000"/>
+        <property name="entityId" value="8994"/>
+        <property name="propertiesName" value="/system/mail.properties"/>
+    </bean>
+    
+    <bean id="fifthJmxEntity" class="com.ordoict.jmxapi.entity.InputEntity">
+        <property name="urlPath" value="service:jmx:rmi:///jndi/rmi://52.33.172.151:8995/jmxrmi"/>
+        <property name="loginId" value="8995"/>
+        <property name="loginPassword" value="aa"/>
+        <property name="mail" value="win8109@gmail.com,choijinwook84@ordoict.com"/>
+        <property name="minCriticalValue" value="10"/>
+        <property name="maxCriticalValue" value="20"/>
+        <property name="mailSendTime" value="30000"/>
+        <property name="durationTime" value="3000"/>
+        <property name="entityId" value="8995"/>
+        <property name="propertiesName" value="/system/mail.properties"/>
+    </bean> -->
+    
+    <bean id="JmxEntityList" class="com.ordoict.jmxapi.entity.InputEntity">
+      <property name="arrayListEntity">
+        <list>
+            <ref bean="firstJmxEntity"/>
+            <!-- <ref bean="secondJmxEntity"/>
+            <ref bean="thirdJmxEntity"/>
+            <ref bean="fourthJmxEntity"/>
+            <ref bean="fifthJmxEntity"/> -->
+        </list>        
+      </property>        
+    </bean>
+    
+	<!-- ========================= INTERCEPTOR CONFIGURATION ======================== -->
+<!-- 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> -->
+<!-- 		<property name="interceptors"> -->
+<!-- 			<list> -->
+<!-- 				<ref bean="prevInterceptor"/> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- PREV INTERCEPTOR BEAN -->
+<!-- 	<bean id="prevInterceptor" class="vCloud.biz.brandSite.common.interceptor.PrevInterceptor" /> -->
+	
+	<!-- ========================= TILES CONFIGURATION ======================== -->
+<!-- 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" > -->
+<!-- 	    <property name="definitions">  -->
+<!--     	    <list>  -->
+<!--             	<value>classpath:tiles/tiles-def.xml</value> -->
+<!--         	</list>  -->
+<!-- 	    </property> -->
+<!-- 	</bean> -->
+	
+	<!-- ========================= EXCEL VIEW RESOLVER ======================== -->
+	<bean id="excelViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0" />
+	</bean>
+	
+	<!-- ========================= TILES VIEW RESOLVER ======================== -->
+<!-- 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">  -->
+<!-- 	 	<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/> -->
+<!-- 		<property name="order" value="1"/>  -->
+<!-- 	</bean> -->
+	
+	<!-- ========================= VIEW RESOLVER ======================== -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+	    <property name="prefix" value="/WEB-INF/views/" />
+	    <property name="suffix" value=".jsp" />
+	    <property name="order" value="2" />
+	</bean>
+	
+	<!-- ========================= MULTIPART RESOLVER ======================== -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="102400000" />
+	</bean>
+
+</beans>	
