@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.0">
+<file name="E:\0002_Dev\0001_workspace\google-api-java-client.samples\analytics-cmdline-sample\src\main\java\com\google\api\services\samples\analytics\cmdline\CoreReportingApiReferenceSample.java">
+<error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="74" column="39" severity="warning" message="Name &apos;DATA_STORE_FACTORY&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+<error line="77" column="32" severity="warning" message="Name &apos;HTTP_TRANSPORT&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="E:\0002_Dev\0001_workspace\google-api-java-client.samples\analytics-cmdline-sample\src\main\java\com\google\api\services\samples\analytics\cmdline\HelloAnalyticsApiSample.java">
+<error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
+<file name="E:\0002_Dev\0001_workspace\google-api-java-client.samples\analytics-cmdline-sample\src\main\java\com\google\api\services\samples\analytics\cmdline\ManagementApiReferenceSample.java">
+<error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="73" column="39" severity="warning" message="Name &apos;DATA_STORE_FACTORY&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+<error line="76" column="32" severity="warning" message="Name &apos;HTTP_TRANSPORT&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+</file>
+<file name="E:\0002_Dev\0001_workspace\google-api-java-client.samples\analytics-cmdline-sample\src\main\java\com\google\api\services\samples\analytics\cmdline\McfReportingApiReferenceSample.java">
+<error line="0" severity="error" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="67" column="39" severity="warning" message="Name &apos;DATA_STORE_FACTORY&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+<error line="70" column="32" severity="warning" message="Name &apos;HTTP_TRANSPORT&apos; must match pattern &apos;^[a-z][a-zA-Z0-9]*_?$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.StaticVariableNameCheck"/>
+<error line="358" severity="warning" message="&apos;if&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+</file>
+</checkstyle>
